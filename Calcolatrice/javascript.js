@@ -87,27 +87,96 @@ function onClickButton(){
 
 
 
+let enter = document.getElementById("btn");
+let btns = document.querySelectorAll(".btn_segno");
+let signs = document.getElementById("showSegno");
 
-let btns = document.querySelectorAll(".btn-m");
+let btnNumbers = document.querySelectorAll(".btn-m");
+
+let boxFirstNumber = document.getElementById("showFirstNumber");
+let boxSecondNumber= document.getElementById("showSecondNumber");
+
+btnNumbers.forEach(btnNumber => {
+    btnNumber.addEventListener("click", function () {
+        if (signs.textContent === "") {
+            inserisciNelBoxNumeroUno(btnNumber.textContent);
+        }else{
+            inserisciNelBoxNumeroDue(btnNumber.textContent);
+        }
 
 
-
-    btns.forEach(btn => {
-        btn.addEventListener("click", function () {
-
-          if(primoBox.textContent === ""){
-              inserisciNelBox(btn.textContent);
-          } ;
-        });
-
-    });
+    })
+});
 
 
-function inserisciNelBox(numero){
-    
+function inserisciNelBoxNumeroUno(numero) {
+    boxFirstNumber.value = numero;
+}
+
+function inserisciNelBoxNumeroDue(numero) {
+    boxSecondNumber.value = numero;
 }
 
 
+btns.forEach(btn => {
+    btn.addEventListener("click", function () {
+
+        switch (btn.textContent) {
+            case "+":
+                inserisciNelBox(btn.textContent);
+
+                break;
+            case "-":
+                inserisciNelBox(btn.textContent);
+                break;
+            case "*":
+                inserisciNelBox(btn.textContent);
+                break;
+            case "/":
+                inserisciNelBox(btn.textContent);
+                break;
+        }
+    });
+});
+
+
+
+
+
+
+function inserisciNelBox(simbolo) {
+    signs.value = simbolo;
+    console.log(simbolo)
+}
+
+
+function addizione(primo, secondo) {
+
+    let somma = primo + secondo;
+    return somma;
+}
+
+function sottrazione(primo, secondo) {
+    let sottrazione = primo - secondo;
+    return sottrazione;
+}
+
+
+function divisione(primo, secondo) {
+
+    let divisione = primo / secondo;
+    return divisione;
+
+}
+
+
+
+function moltiplicazione(primo, secondo) {
+
+    let moltiplicazione = primo * secondo;
+    return moltiplicazione;
+
+}
 
 
 
